@@ -31,8 +31,10 @@ module.exports = {
     camelcase: 'off',
     'react/react-in-jsx-scope': 'off',
     'no-unused-vars': 'warn',
+    '@typescript-eslint/no-unused-vars': 'warn',
     'no-trailing-spaces': 'warn',
     'key-spacing': 'warn',
     'space-infix-ops': 'warn',
+    '@typescript-eslint/no-explicit-any': 'off',
   },
 }
