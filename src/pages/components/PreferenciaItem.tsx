@@ -35,7 +35,7 @@ const NumeroPreferenceItem: React.FC<itemprops> = ({ preff, perfilID, onChange }
 const BoolPreferenceItem: React.FC<itemprops> = ({ preff, perfilID, onChange }) => {
   const { isLoading, onChangeValue, value } = userPreferenciaItem(preff, { onChange, perfilID })
   return (
-    <div className='mb-1 px-2 pt-1 rounded flex w-full lg:w-1/2 justify-between'>
+    <div className='mb-1 px-2 pt-1 rounded flex w-full  lg:w-[50vw] justify-between'>
       <div>
         <div className='flex items-center gap-1'>
           <h1 className='text-xs text-primary font-semibold'>{preff.nombre}</h1>
@@ -60,7 +60,9 @@ const TextPreferenceItem: React.FC<itemprops> = ({ preff, perfilID, onChange }) 
       </div>
       <p className='text-xs mb-1'>{preff.descripcion}</p>
       <textarea
-        className={classNames('text-xs p-1 rounded w-full lg:w-1/2 overflow-auto', { 'font-mono': preff.tipo_campo === 'json' })}
+        className={classNames('text-xs p-1 rounded w-full lg:w-[50vw] overflow-auto', {
+          'font-mono': preff.tipo_campo === 'json',
+        })}
         rows={preff.tipo_campo === 'json' ? 6 : 1}
         disabled={isLoading}
         onChange={e => onChangeValue(e.target.value)}

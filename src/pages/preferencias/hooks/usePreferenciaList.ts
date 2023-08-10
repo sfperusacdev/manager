@@ -9,6 +9,7 @@ export const usePreferenciaList = (perfilID: string) => {
   const { data, isLoading } = useQuery({
     queryKey: [PERFIL_PREFERENCIAS, perfilID],
     queryFn: () => getPreferencias(perfilID),
+    keepPreviousData: false,
   })
   const changeValue = (p: Preferencia) => {
     client.setQueryData<Preferencia[]>([PERFIL_PREFERENCIAS, perfilID], oldstae => {
@@ -20,9 +21,11 @@ export const usePreferenciaList = (perfilID: string) => {
       })
     })
   }
+  const refresh = () => client.invalidateQueries([PERFIL_PREFERENCIAS, perfilID])
   return {
     grupos: data ?? [],
     loading: isLoading,
     changeValue,
+    refresh,
   }
 }

@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { INode } from 'react-accessible-treeview'
 import { useEffect, useState } from 'react'
 import { DataResultNodos } from '../../../modesl/data_result_nodos'
@@ -15,9 +15,10 @@ const base: TreeNodo = {
   tipo: 'base',
 }
 export const usePreferenciasContent = () => {
+  const client = useQueryClient()
   const [selectedPerfilID, setPerfilID] = useState<string>()
   const [nodos, setNodos] = useState<TreeNodo[]>([base])
-  const { data, isFetching: fetchingEmpresas } = useQuery<DataResultNodos, Error>({
+  const { data, isFetching } = useQuery<DataResultNodos, Error>({
     queryKey: [NODOS_REACT_QUERY_KEY],
     queryFn: getAllNodos,
   })
@@ -40,10 +41,12 @@ export const usePreferenciasContent = () => {
       setPerfilID(node.id as string)
     }
   }
+  const refresh = () => client.invalidateQueries([NODOS_REACT_QUERY_KEY])
   return {
     nodos,
-    fetchingEmpresas,
+    isFetching,
     selectedPerfilID,
     onSelectNode,
+    refresh,
   }
 }
