@@ -6,7 +6,7 @@ import { produce } from 'immer'
 
 export const usePreferenciaList = (perfilID: string) => {
   const client = useQueryClient()
-  const { data, isLoading } = useQuery({
+  const { data, isFetching } = useQuery({
     queryKey: [PERFIL_PREFERENCIAS, perfilID],
     queryFn: () => getPreferencias(perfilID),
     keepPreviousData: false,
@@ -24,7 +24,7 @@ export const usePreferenciaList = (perfilID: string) => {
   const refresh = () => client.invalidateQueries([PERFIL_PREFERENCIAS, perfilID])
   return {
     grupos: data ?? [],
-    loading: isLoading,
+    loading: isFetching,
     changeValue,
     refresh,
   }

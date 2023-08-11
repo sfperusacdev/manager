@@ -14,12 +14,11 @@ export const PreferencesList: React.FC<props> = ({ perfilID }) => {
     <div className='relative'>
       <div className='absolute flex justify-end right-0 px-3 py-4 items-center gap-2 select-none'>
         <span
-          className={classNames('bg-red-500', { 'animate-spin': loading })}
           onClick={() => {
             refresh()
           }}
         >
-          <GrRefresh />
+          <GrRefresh className={classNames({ 'animate-spin': loading })} />
         </span>
       </div>
       {grupos.map(g => {
