@@ -1,9 +1,9 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { INode } from 'react-accessible-treeview'
 import { useEffect, useState } from 'react'
-import { DataResultNodos } from '../../../modesl/data_result_nodos'
 import { NODOS_REACT_QUERY_KEY } from '../../../keys/keys'
 import { getAllNodos } from '../../../services/preferencias/nodos'
+import { Nodo } from '../../../modesl/data_result_nodos'
 export interface TreeNodo extends INode {
   tipo: 'base' | 'empresa' | 'servicio' | 'perfil'
 }
@@ -18,14 +18,14 @@ export const usePreferenciasContent = () => {
   const client = useQueryClient()
   const [selectedPerfilID, setPerfilID] = useState<string>()
   const [nodos, setNodos] = useState<TreeNodo[]>([base])
-  const { data, isFetching } = useQuery<DataResultNodos, Error>({
+  const { data, isFetching } = useQuery<Nodo[], Error>({
     queryKey: [NODOS_REACT_QUERY_KEY],
     queryFn: getAllNodos,
   })
   useEffect(() => {
     if (data == null) return
     setNodos(
-      data.nodos.map((n): TreeNodo => {
+      data.map((n): TreeNodo => {
         return {
           id: n.id,
           name: n.name,

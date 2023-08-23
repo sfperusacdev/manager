@@ -1,7 +1,3 @@
-export interface DataResultNodos {
-  nodos: Nodo[]
-}
-
 export interface Nodo {
   id: string
   name: string
