@@ -28,6 +28,7 @@ const NumeroPreferenceItem: React.FC<itemprops> = ({ preff, perfilID, onChange }
         disabled={isLoading}
         onChange={e => onChangeValue(e.target.value)}
       />
+      <p className='font-mono text-[10px] text-black/70'>{preff.identiticador}</p>
     </div>
   )
 }
@@ -42,6 +43,7 @@ const BoolPreferenceItem: React.FC<itemprops> = ({ preff, perfilID, onChange }) 
           {isLoading && <SmallSpinner />}
         </div>
         <p className='text-xs mb-1'>{preff.descripcion}</p>
+        <p className='font-mono text-[10px] text-black/70'>{preff.identiticador}</p>
       </div>
       <div>
         <ToggleInput value={value} disabled={isLoading} onChange={onChangeValue} />
@@ -60,7 +62,7 @@ const TextPreferenceItem: React.FC<itemprops> = ({ preff, perfilID, onChange }) 
       </div>
       <p className='text-xs mb-1'>{preff.descripcion}</p>
       <textarea
-        className={classNames('text-xs p-1 rounded w-full lg:w-[50vw] overflow-auto', {
+        className={classNames('text-[8px] p-1 rounded w-full lg:w-[50vw] overflow-auto', {
           'font-mono': preff.tipo_campo === 'json',
         })}
         rows={preff.tipo_campo === 'json' ? 6 : 1}
@@ -68,6 +70,7 @@ const TextPreferenceItem: React.FC<itemprops> = ({ preff, perfilID, onChange }) 
         onChange={e => onChangeValue(e.target.value)}
         value={value}
       />
+      <p className='font-mono text-[10px] text-black/70'>{preff.identiticador}</p>
     </div>
   )
 }
