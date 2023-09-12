@@ -39,7 +39,7 @@ export const PreferenciasHome = () => {
       </div>
       <div className='h-full flex-grow'>
         <PanelGroup autoSaveId='preff_panel_cj977uj0hnn3bdddaop0' direction='horizontal'>
-          <Panel defaultSize={20} minSize={40}>
+          <Panel defaultSize={20} minSize={20}>
             <div className='h-full flex flex-col'>
               <div className='h-6 bg-gris flex justify-end px-2'>
                 <div className='flex justify-end items-center gap-1 select-none cursor-pointer clickable'>
